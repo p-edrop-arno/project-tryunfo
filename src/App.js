@@ -12,6 +12,7 @@ class App extends React.Component {
     this.superTrunfoHandler = this.superTrunfoHandler.bind(this);
     this.totalAttrSum = this.totalAttrSum.bind(this);
     this.filterName = this.filterName.bind(this);
+    this.filterRare = this.filterRare.bind(this);
 
     this.state = {
       cardName: '',
@@ -117,6 +118,16 @@ class App extends React.Component {
       ),
     }));
   }
+  filterRare({ target }) {
+    const { value } = target;
+    const { actualDeck } = this.state;
+    if (value === 'todas') return actualDeck;
+    this.setState(({
+      actualDeck: actualDeck.filter(
+        (eachInDeck) => eachInDeck.cardRare === value,
+      ),
+    }));
+  }
 
   render() {
     const {
@@ -172,6 +183,17 @@ class App extends React.Component {
             data-testid="name-filter"
             onChange={this.filterName}
           />
+          <select
+            id="cardRare"
+            value={cardRare}
+            onChange={this.filterRare}
+            data-testid="rare-filter"
+          >
+            <option value="todas">todas</option>
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
+            <option value="muito raro">muito raro</option>
+          </select>
         </section>
 
         <h2>Cartas:</h2>
