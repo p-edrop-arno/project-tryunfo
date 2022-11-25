@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends Component {
@@ -19,7 +19,7 @@ class Card extends Component {
         <h3 data-testid="name-card">
           {cardName}
         </h3>
-        <img data-testid="image-card" src={cardImage} alt={cardName} />
+        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
         <p data-testid="description-card">
           {cardDescription}
         </p>
