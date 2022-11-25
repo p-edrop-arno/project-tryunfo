@@ -13,6 +13,9 @@ class App extends React.Component {
     this.totalAttrSum = this.totalAttrSum.bind(this);
     this.filterName = this.filterName.bind(this);
     this.filterRare = this.filterRare.bind(this);
+    // Links de referências que usei, estava dando erro quando passava as props
+    // https://stackoverflow.com/questions/2236747/what-is-the-use-of-the-javascript-bind-method
+    // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
 
     this.state = {
       cardName: '',
@@ -118,6 +121,7 @@ class App extends React.Component {
       ),
     }));
   }
+
   filterRare({ target }) {
     const { value } = target;
     const { actualDeck } = this.state;
@@ -149,31 +153,31 @@ class App extends React.Component {
         <h1>Tryunfo</h1>
 
         <Form
-          cardName={cardName}
-          cardImage={cardImage}
-          cardDescription={cardDescription}
-          cardAttr1={cardAttr1}
-          cardAttr2={cardAttr2}
-          cardAttr3={cardAttr3}
-          cardRare={cardRare}
-          cardTrunfo={cardTrunfo}
-          hasTrunfo={hasTrunfo}
-          trunfoHandler={this.superTrunfoHandler}
-          onInputChange={this.onInputChange}
-          isSaveButtonDisabled={!this.saveButtonValidation()}
-          onSaveButtonClick={this.onSaveButtonClick}
+          cardName={ cardName }
+          cardImage={ cardImage }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
+          trunfoHandler={ this.superTrunfoHandler }
+          onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ !this.saveButtonValidation() }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
 
         <Card
-          cardName={cardName}
-          cardImage={cardImage}
-          cardDescription={cardDescription}
-          cardAttr1={cardAttr1}
-          cardAttr2={cardAttr2}
-          cardAttr3={cardAttr3}
-          cardRare={cardRare}
-          cardTrunfo={cardTrunfo}
-          hasTrunfo={hasTrunfo}
+          cardName={ cardName }
+          cardImage={ cardImage }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
         />
 
         <section>
@@ -181,12 +185,12 @@ class App extends React.Component {
           <input
             type="text"
             data-testid="name-filter"
-            onChange={this.filterName}
+            onChange={ this.filterName }
           />
           <select
             id="cardRare"
-            value={cardRare}
-            onChange={this.filterRare}
+            value={ cardRare }
+            onChange={ this.filterRare }
             data-testid="rare-filter"
           >
             <option value="todas">todas</option>
@@ -199,22 +203,22 @@ class App extends React.Component {
         <h2>Cartas:</h2>
         {
           actualDeck.map((cardStatus) => (
-            <div key={cardStatus.cardName}>
+            <div key={ cardStatus.cardName }>
               <Card
-                cardName={cardStatus.cardName}
-                cardImage={cardStatus.cardImage}
-                cardDescription={cardStatus.cardDescription}
-                cardAttr1={cardStatus.cardAttr1}
-                cardAttr2={cardStatus.cardAttr2}
-                cardAttr3={cardStatus.cardAttr3}
-                cardRare={cardStatus.cardRare}
-                cardTrunfo={cardStatus.cardTrunfo}
-                hasTrunfo={cardStatus.hasTrunfo}
+                cardName={ cardStatus.cardName }
+                cardImage={ cardStatus.cardImage }
+                cardDescription={ cardStatus.cardDescription }
+                cardAttr1={ cardStatus.cardAttr1 }
+                cardAttr2={ cardStatus.cardAttr2 }
+                cardAttr3={ cardStatus.cardAttr3 }
+                cardRare={ cardStatus.cardRare }
+                cardTrunfo={ cardStatus.cardTrunfo }
+                hasTrunfo={ cardStatus.hasTrunfo }
               />
 
               <button
                 type="button"
-                onClick={() => this.deleteHandler(cardStatus.cardName)}
+                onClick={ () => this.deleteHandler(cardStatus.cardName) }
                 data-testid="delete-button"
               >
                 Excluir
